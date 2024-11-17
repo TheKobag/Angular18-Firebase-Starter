@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "setlist-manager": {
+    "angular18-firebase-starter": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/setlist-manager",
+            "outputPath": "dist/angular18-firebase-starter",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -67,10 +67,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "setlist-manager:build:production"
+              "buildTarget": "angular18-firebase-starter:build:production"
             },
             "development": {
-              "buildTarget": "setlist-manager:build:development"
+              "buildTarget": "angular18-firebase-starter:build:development"
             }
           },
           "defaultConfiguration": "development"
