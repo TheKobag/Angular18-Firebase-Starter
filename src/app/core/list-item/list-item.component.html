@@ -1,0 +1,17 @@
+<div class="flex flex-wrap p-2 align-items-center gap-3">
+  <div class="flex-1 flex flex-column gap-2">
+    <span class="font-bold">{{ item().name }}</span>
+    <div class="flex align-items-center gap-2">
+      <i class="pi pi-tag text-sm"></i>
+      <span>
+        {{ item().category }}
+      </span>
+    </div>
+  </div>
+  <p-button icon="pi pi-eye" [routerLink]="item().id" />
+  <p-button
+    icon="pi pi-trash"
+    severity="danger"
+    (onClick)="onRemoveItem.emit(item().id)"
+  />
+</div>

@@ -1,0 +1,36 @@
+<div
+  class="surface-ground flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden"
+>
+  <div class="flex flex-column align-items-center justify-content-center">
+    <img
+      src="assets/layout/images/light.png"
+      alt="Logo"
+      class="mb-5 w-26rem flex-shrink-0"
+    />
+    <div
+      style="
+        background: linear-gradient(
+          180deg,
+          var(--primary-color) 10%,
+          rgba(33, 150, 243, 0) 30%
+        );
+      "
+      class="p-1 pb-0 border-round-3xl w-full"
+    >
+      <div
+        class="w-full surface-card py-8 px-5 sm:px-8 border-round-3xl "
+      >
+        <div class="text-center mb-5">
+          <div class="text-900 text-3xl font-medium mb-3">
+            {{ "LOGIN.REGISTER.LABEL" | translate }}
+          </div>
+        </div>
+
+        <app-login-form
+          [loginForm]="loginForm"
+          (onLogin)="onRegister()"
+        ></app-login-form>
+      </div>
+    </div>
+  </div>
+</div>

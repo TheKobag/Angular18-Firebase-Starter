@@ -1,0 +1,44 @@
+{
+  "LOGIN": {
+    "SIGNIN": {
+      "LABEL": "Sign in to continue.",
+      "REGISTER": {
+        "LABEL": "Don't have an account yet?",
+        "CLICK": " with just one click."
+      }
+    },
+    "REGISTER": {
+      "LABEL": "Register to continue"
+    },
+    "FORM": {
+      "EMAIL": {
+        "LABEL": "Email",
+        "PLACEHOLDER": "Email address",
+        "ERRORS": {
+          "REQUIRED": "Email is required.",
+          "WRONG_FORMAT": "Wrong email format."
+        }
+      },
+      "PASSWORD": {
+        "LABEL": "Password",
+        "PLACEHOLDER": "Email address",
+        "ERRORS": {
+          "REQUIRED": "Email is required.",
+          "WRONG_FORMAT": "Wrong email format."
+        }
+      },
+      "REMEMBER_ME": {
+        "LABEL": "Remember me"
+      },
+      "FORGOT_PASSWORD": {
+        "LABEL": "Forgot password?"
+      },
+      "SIGN_IN": {
+        "LABEL": "Sign in"
+      },
+      "SIGN_IN_GOOGLE": {
+        "LABEL": "Sign in with Google"
+      }
+    }
+  }
+}
