@@ -1,11 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  input,
-  InputSignal,
-  output,
-  OutputEmitterRef,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, InputSignal, output, OutputEmitterRef } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 import { TranslateModule } from '@ngx-translate/core';
@@ -18,13 +11,7 @@ import { PasswordModule } from 'primeng/password';
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-login-form',
   standalone: true,
-  imports: [
-    TranslateModule,
-    ReactiveFormsModule,
-    PasswordModule,
-    CheckboxModule,
-    ButtonModule,
-  ],
+  imports: [TranslateModule, ReactiveFormsModule, PasswordModule, CheckboxModule, ButtonModule],
   templateUrl: './login-form.component.html',
 })
 export class LoginFormComponent {

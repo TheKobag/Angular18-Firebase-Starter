@@ -1,31 +1,16 @@
-<div
-  class="surface-ground flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden"
->
+<div class="surface-ground flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden">
   <div class="flex flex-column align-items-center justify-content-center">
-    <img
-      src="assets/layout/images/logo-dark.png"
-      alt="Logo"
-      class="mb-5 w-26rem flex-shrink-0"
-    />
-    <div
-      style="
-        background: linear-gradient(
-          180deg,
-          var(--primary-color) 10%,
-          rgba(33, 150, 243, 0) 30%
-        );
-      "
-      class="p-1 pb-0 border-round-3xl"
-    >
+    <img src="assets/layout/images/logo-dark.png" alt="Logo" class="mb-5 w-26rem flex-shrink-0" />
+    <div style="background: linear-gradient(180deg, var(--primary-color) 10%, rgba(33, 150, 243, 0) 30%)" class="p-1 pb-0 border-round-3xl">
       <div class="w-full surface-card py-8 px-5 sm:px-8 border-round-3xl">
         <div class="text-center mb-5">
           <p class="text-600 font-medium">
-            {{ "LOGIN.SIGNIN.LABEL" | translate }}
+            {{ 'LOGIN.SIGNIN.LABEL' | translate }}
           </p>
           <span class="text-600 font-medium">
-            {{ "LOGIN.SIGNIN.REGISTER.LABEL" | translate }}
+            {{ 'LOGIN.SIGNIN.REGISTER.LABEL' | translate }}
             <a routerLink="/register">Register</a>
-            {{ "LOGIN.SIGNIN.REGISTER.CLICK" | translate }}
+            {{ 'LOGIN.SIGNIN.REGISTER.CLICK' | translate }}
           </span>
         </div>
 

@@ -11,6 +11,6 @@ export const isLoggedInGuard = () => {
 
   return authService.userState$.pipe(
     take(1),
-    tap((isLoggedIn) => (isLoggedIn ? true : router.navigate(['/login'])))
+    tap((isLoggedIn) => (isLoggedIn ? true : router.navigate(['/login']))),
   );
 };

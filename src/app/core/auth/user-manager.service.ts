@@ -1,51 +1,54 @@
-import { inject, Injectable } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { inject, Injectable, signal } from '@angular/core';
 
 import { User as FirebaseUser } from 'firebase/auth';
-import { BehaviorSubject, Observable, of, tap } from 'rxjs';
-import { User } from './user.model';
-import { UserService } from './user.service';
+import { map, Observable, of, tap } from 'rxjs';
 
+import { FirestoreDataService } from '../firebase/firestore-data.service';
+import { User } from './user.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserManagerService {
-  private readonly userService = inject(UserService);
+  private readonly firestoreService = inject(FirestoreDataService);
 
-  _user!: User;
-  private user$ = new BehaviorSubject<User>(this._user);
-  user = toSignal<User>(this.user$, { requireSync: true });
+  user = signal<User | null>(null);
 
-  setUser(firebaseUser: FirebaseUser | null): Observable<User> {
-    let actualUser = of(this.user());
+  setUser(firebaseUser: FirebaseUser | null): Observable<User | null> {
     if (firebaseUser) {
-      this.userService.getUser(firebaseUser.uid).subscribe((user) => {
-        if (!user) {
-          this.userService
-            .createUser(firebaseUser)
-            .pipe(tap((user) => this.updateLocalUser(user)))
-            .subscribe((usr) => (actualUser = of(usr)));
-        } else {
-          this.updateLocalUser(user);
-          actualUser = of(user);
-        }
-      });
-    } else {
-      // const localStorageUid = localStorage.getItem('gw_user_uid')
-      this.updateLocalUser(this.userService.createAppUser(null));
-    }
+      return this.firestoreService.getItem('users', firebaseUser.uid).pipe(
+        map((user) => {
+          if (!user) {
+            const newUser = this.createAppUser(firebaseUser);
+            this.firestoreService.addItem('users', newUser, firebaseUser.uid).pipe(tap(() => this.updateLocalUser(newUser)));
+          } else {
+            this.updateLocalUser(user);
+          }
 
-    return actualUser;
+          return user;
+        }),
+      );
+    } else {
+      this.updateLocalUser(this.createAppUser(null));
+      return of(null);
+    }
   }
 
-  updateUserProperties(): Observable<User> {
-    return this.userService.updateUser(this.user().uid, this.user()).pipe(tap((user) => this.updateLocalUser(user)));
+  updateUserProperties(user: User): Observable<void> {
+    return this.firestoreService.updateItem('users', user.uid, user).pipe(tap(() => this.updateLocalUser(user)));
   }
 
   updateLocalUser(user: User): void {
-    console.log('update', user);
-    this.user$.next(user);
+    this.user.set(user);
   }
 
+  private createAppUser(firebaseUser: FirebaseUser | null): User {
+    return {
+      uid: firebaseUser?.uid || '',
+      email: firebaseUser?.email || '',
+      displayName: firebaseUser?.displayName || '',
+      photoURL: firebaseUser?.photoURL || '',
+      emailVerified: firebaseUser?.emailVerified || false,
+    };
+  }
 }

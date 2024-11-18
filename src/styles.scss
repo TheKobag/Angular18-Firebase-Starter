@@ -1,7 +1,7 @@
-@import "primeng/resources/themes/vela-blue/theme.css";
-@import "primeng/resources/primeng.css";
-@import "../node_modules/primeflex/primeflex.scss";
-@import "primeicons/primeicons.css";
+@import 'primeng/resources/themes/vela-blue/theme.css';
+@import 'primeng/resources/primeng.css';
+@import '../node_modules/primeflex/primeflex.scss';
+@import 'primeicons/primeicons.css';
 
 body {
   margin: 0;
@@ -9,5 +9,5 @@ body {
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
